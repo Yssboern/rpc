@@ -1,16 +1,21 @@
 package com.example.rpc;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 class RpcApplicationTests {
 
-	@Test
-	void contextLoads() {
-		assertTrue(true);
-	}
+    @Autowired
+    private ApplicationContext applicationContext;
+
+    @Test
+    void contextLoads() {
+        assertNotNull(applicationContext, "ApplicationContext should not be null");
+    }
 
 }
