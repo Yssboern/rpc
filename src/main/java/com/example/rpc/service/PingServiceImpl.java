@@ -9,15 +9,15 @@ public class PingServiceImpl extends PingServiceGrpc.PingServiceImplBase {
 
     @Override
     public void getPing(PingRequest request, StreamObserver<PingResponse> responseObserver) {
-        System.out.println(request + " " + responseObserver);
-        //super.getPing(request, responseObserver);
-        System.out.println(request + " " + responseObserver);
 
-        PingResponse.Builder builder = PingResponse.newBuilder()
+        PingResponse.Builder builder = PingResponse
+                .newBuilder()
                 .setMessage("Pong!");
 
-        var r = builder.build();
-        responseObserver.onNext(r);
+        System.out.println("Server received " + request.getMessage() + " sending response: Pong!");
+
+        var response = builder.build();
+        responseObserver.onNext(response);
         responseObserver.onCompleted();
     }
 }
